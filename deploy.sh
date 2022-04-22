@@ -19,8 +19,8 @@ echo "------------------------"
 
 echo "Check Software------------------------"
 aws --version
-kubectl --version
-helm --version
+kubectl version
+helm version
 echo "------------------------"
 aws configure set region $AWS_REGION
 aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
