@@ -16,10 +16,11 @@ mkdir -p /home/$USER/.kube
 cd /home/$USER/.kube
 
 # Delete Config file if it exits
-file=config
-if [ -fe config ]
+file='config'
+if [ -f $file ]
 then 
-    rm config
+	echo "Removing $file"
+    	rm $file
 fi
 
 # Creating File
@@ -33,7 +34,7 @@ echo "  name: kubernetes" >> config
 echo "contexts:" >> config  
 echo "- context:" >> config  
 echo "    cluster: kubernetes" >> config  
-echo "    namespace: $"{DEPLOY_NAMESPACE}" >> config 
+echo "    namespace: ${DEPLOY_NAMESPACE}" >> config 
 echo "    user: aws" >> config  
 echo "  name: aws" >> config  
 echo "current-context: aws" >> config  
@@ -56,11 +57,10 @@ echo "      provideClusterInfo: false" >> config
 
 cd ${initial_path}
 
-# Helm Dependency Update
-helm dependency update ${DEPLOY_CHART_PATH:-helm/}
+echo $(pwd)
 
 # Helm Deployment
-UPGRADE_COMMAND="helm upgrade --wait --atomic --install --timeout ${TIMEOUT}"
+UPGRADE_COMMAND="helm upgrade --install --timeout 30s"
 for config_file in ${DEPLOY_CONFIG_FILES//,/ }
 do
     UPGRADE_COMMAND="${UPGRADE_COMMAND} -f ${config_file}"
