@@ -13,18 +13,11 @@ pwd
 echo "CURRENT Files:"
 ls -al
 
-echo "------------------------"
-env
-echo "------------------------"
 
-echo "Check Software------------------------"
-aws --version
-kubectl version
-helm version
-echo "------------------------"
-aws configure set region $AWS_REGION
 aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
 aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+aws configure set region $AWS_REGION
+
 
 # Save Inital Path
 initial_path=$(pwd)
@@ -32,6 +25,7 @@ initial_path=$(pwd)
 
 # Create folder in home directory
 mkdir -p /home/$USER/.kube
+echo "Kube DIR : " "/home/$USER/.kube"
 cd /home/$USER/.kube
 
 # Delete Config file if it exits
@@ -41,6 +35,8 @@ then
 	echo "Removing $file"
     	rm $file
 fi
+
+echo "SERVER Var:" $SERVER
 
 # Creating File
 config=""
@@ -74,7 +70,15 @@ echo "      env: null" >> config
 echo "      interactiveMode: IfAvailable" >> config  
 echo "      provideClusterInfo: false" >> config  
 
+
 cd ${initial_path}
+
+echo "Check Software------------------------"
+aws --version
+kubectl version
+helm version
+echo "------------------------"
+
 
 echo $(pwd)
 
