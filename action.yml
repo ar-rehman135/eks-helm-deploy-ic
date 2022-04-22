@@ -5,48 +5,50 @@ branding:
     icon: anchor
     color: yellow
 inputs:
-    aws-secret-access-key:
-        description: 'AWS credentials used to login to eks.'
-        required: true
     aws-access-key-id:
         description: 'AWS credentials used to login to eks.'
         required: true
-    aws-region:
-        description: 'AWS region to use (default: us-east-2)'
+    aws-secret-access-key:
+        description: 'AWS credentials used to login to eks.'
         required: true
-        default: us-east-2
+    aws-region:
+        description: 'AWS region to use'
+        required: true
     cluster-name:
         description: 'EKS cluster name.'
         required: true
-    cluster-role-arn:
-        description: 'EKS cluster admin role arn.'
-        required: false
     cluster-cert:
         description: 'Cert for authority-data'
         required: true
     server:
         description: 'Server for linking'
         required: true
-    config-files:
-        description: 'Comma separates list of helm values files.'
-        required: false
-    namespace:
-        description: 'Kubernetes namespace to use.'
-        required: false
-    values:
-        description: 'Comma separated list of value sets for helms. e.x: key1=value1,key2=value2'
-        required: false
+    env:
+        description: 'ENV Name'
+        required: true
     name:
         description: 'Helm release name.'
         required: true
     chart-path:
         description: 'The path of the chart.'
         required: true
-        default: 'helm/'
+    namespace:
+        description: 'Kubernetes namespace to use.'
+        required: true
+    config-files:
+        description: 'Comma separates list of helm values files.'
+        required: true
+
     timeout:
         description: 'Timeout for the job.'
-        required: true
-        default: 5m0s
+        required: false
+        default: 30s
+    cluster-role-arn:
+        description: 'EKS cluster admin role arn.'
+        required: false
+    values:
+        description: 'Comma separated list of value sets for helms. e.x: key1=value1,key2=value2'
+        required: false
     dry-run:
         description: 'Simulate an upgrade.'
         required: false
@@ -58,20 +60,22 @@ runs:
     using: 'docker'
     image: 'docker://infcomp/eks-helm-deploy-ic:v3'
     env:
-        AWS_REGION: ${{ inputs.aws-region }}
-        AWS_SECRET_ACCESS_KEY: ${{ inputs.aws-secret-access-key }}
         AWS_ACCESS_KEY_ID: ${{ inputs.aws-access-key-id }}
+        AWS_SECRET_ACCESS_KEY: ${{ inputs.aws-secret-access-key }}
+        AWS_REGION: ${{ inputs.aws-region }}
         CLUSTER_NAME: ${{ inputs.cluster-name }}
-        CLUSTER_ROLE_ARN: ${{ inputs.cluster-role-arn }}
         CLUSTER_CERT: ${{ inputs.cluster-cert }}
         SERVER: ${{ inputs.server }}
-        DEBUG: ${{ inputs.debug }}
-        DEPLOY_CONFIG_FILES: ${{ inputs.config-files }}
-        DEPLOY_NAMESPACE: ${{ inputs.namespace }}
-        DEPLOY_VALUES: ${{ inputs.values }}
+        ENV: ${{ inputs.env }}
         DEPLOY_NAME: ${{ inputs.name }}
         DEPLOY_CHART_PATH: ${{ inputs.chart-path }}
-        DRY_RUN: ${{ inputs.dry-run }}
+        DEPLOY_NAMESPACE: ${{ inputs.namespace }}
+        DEPLOY_CONFIG_FILES: ${{ inputs.config-files }}
+        
         TIMEOUT: ${{ inputs.timeout }}
+        CLUSTER_ROLE_ARN: ${{ inputs.cluster-role-arn }}
+        DEPLOY_VALUES: ${{ inputs.values }}
+        DRY_RUN: ${{ inputs.dry-run }}
+        DEBUG: ${{ inputs.debug }}
        
 

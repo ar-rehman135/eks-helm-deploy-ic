@@ -7,6 +7,11 @@
 # fi
 # ${UPDATE_KUBECONFIG_COMMAND}
 
+env
+
+aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+
 # Save Inital Path
 initial_path=$(pwd)
 
@@ -77,7 +82,7 @@ fi
 if [ "$DRY_RUN" = true ]; then
     UPGRADE_COMMAND="${UPGRADE_COMMAND} --dry-run"
 fi
-UPGRADE_COMMAND="${UPGRADE_COMMAND} ${DEPLOY_NAME} ${DEPLOY_CHART_PATH:-helm/}"
+UPGRADE_COMMAND="${UPGRADE_COMMAND} ${DEPLOY_NAME} ${DEPLOY_CHART_PATH}"
 echo "Executing: ${UPGRADE_COMMAND}"
 ${UPGRADE_COMMAND}
 
