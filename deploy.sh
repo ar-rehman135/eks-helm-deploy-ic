@@ -16,9 +16,9 @@ mkdir -p /home/$USER/.kube
 cd /home/$USER/.kube
 
 # Delete Config file if it exits
-file=config
+file='config'
 if [ -f $file ]; then 
-    rm $file
+    rm config
 fi
 
 # Creating File
