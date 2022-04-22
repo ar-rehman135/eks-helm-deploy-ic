@@ -17,7 +17,8 @@ cd /home/$USER/.kube
 
 # Delete Config file if it exits
 file='config'
-if [ -f $file ]; then 
+if [ -f config ]
+then 
     rm config
 fi
 
@@ -32,7 +33,7 @@ echo "  name: kubernetes" >> config
 echo "contexts:" >> config  
 echo "- context:" >> config  
 echo "    cluster: kubernetes" >> config  
-echo "    namespace: $"{DEPLOY_NAMESPACE}" >> config 
+echo "    namespace: ${DEPLOY_NAMESPACE}" >> config 
 echo "    user: aws" >> config  
 echo "  name: aws" >> config  
 echo "current-context: aws" >> config  
@@ -55,11 +56,10 @@ echo "      provideClusterInfo: false" >> config
 
 cd ${initial_path}
 
-# Helm Dependency Update
-helm dependency update ${DEPLOY_CHART_PATH:-helm/}
+echo $(pwd)
 
 # Helm Deployment
-UPGRADE_COMMAND="helm upgrade --wait --atomic --install --timeout ${TIMEOUT}"
+UPGRADE_COMMAND="helm upgrade --install --timeout 30s"
 for config_file in ${DEPLOY_CONFIG_FILES//,/ }
 do
     UPGRADE_COMMAND="${UPGRADE_COMMAND} -f ${config_file}"
@@ -77,7 +77,7 @@ if [ "$DRY_RUN" = true ]; then
     UPGRADE_COMMAND="${UPGRADE_COMMAND} --dry-run"
 fi
 UPGRADE_COMMAND="${UPGRADE_COMMAND} ${DEPLOY_NAME} ${DEPLOY_CHART_PATH:-helm/}"
-sudo echo "Executing: ${UPGRADE_COMMAND}"
+echo "Executing: ${UPGRADE_COMMAND}"
 ${UPGRADE_COMMAND}
 
 rm -r /home/$USER/.kube 
