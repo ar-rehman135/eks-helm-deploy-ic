@@ -7,11 +7,22 @@
 # fi
 # ${UPDATE_KUBECONFIG_COMMAND}
 
-env
+echo "CURRENT DIR:"
+pwd
 
+echo "CURRENT Files:"
+ls
+
+echo "------------------------"
+env
+echo "------------------------"
+
+echo "AWS------------------------"
+aws --version
 aws configure set region $AWS_REGION
 aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
 aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+echo "------------------------"
 
 # Save Inital Path
 initial_path=$(pwd)
