@@ -17,8 +17,8 @@ cd /home/$USER/.kube
 
 # Delete Config file if it exits
 file=config
-if [ -f $file == config ]; then 
-    rm config
+if [ -f $file ]; then 
+    rm $file
 fi
 
 # Creating File
