@@ -27,6 +27,7 @@ initial_path=$(pwd)
 mkdir -p /home/.kube
 echo "Kube DIR : " "/home/.kube"
 KUBECONFIG='/home/.kube'
+echo $KUBECONFIG
 cd /home/.kube
 
 # Delete Config file if it exits
