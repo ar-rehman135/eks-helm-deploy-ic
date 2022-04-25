@@ -94,7 +94,7 @@ fi
 if [ -n "$DEPLOY_VALUES" ]; then
     UPGRADE_COMMAND="${UPGRADE_COMMAND} --set ${DEPLOY_VALUES}"
 fi
-if [ "$DEBUG" = true ]; then
+if [ true ]; then
     UPGRADE_COMMAND="${UPGRADE_COMMAND} --debug"
 fi
 if [ "$DRY_RUN" = true ]; then
@@ -104,4 +104,4 @@ UPGRADE_COMMAND="${UPGRADE_COMMAND} ${DEPLOY_NAME} ${DEPLOY_CHART_PATH}"
 echo "Executing: ${UPGRADE_COMMAND}"
 ${UPGRADE_COMMAND}
 
-# rm -r /home/$USER/.kube 
+rm -r /home/$USER/.kube 
