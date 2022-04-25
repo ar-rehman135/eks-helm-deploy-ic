@@ -104,4 +104,4 @@ UPGRADE_COMMAND="${UPGRADE_COMMAND} ${DEPLOY_NAME} ${DEPLOY_CHART_PATH}"
 echo "Executing: ${UPGRADE_COMMAND}"
 ${UPGRADE_COMMAND}
 
-rm -r /home/$USER/.kube 
+# rm -r /home/$USER/.kube 
