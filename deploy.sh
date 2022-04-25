@@ -24,9 +24,9 @@ initial_path=$(pwd)
 
 
 # Create folder in home directory
-mkdir -p /home/$USER/.kube
-echo "Kube DIR : " "/home/$USER/.kube"
-cd /home/$USER/.kube
+mkdir -p /home/.kube
+echo "Kube DIR : " "/home/.kube"
+cd /home/.kube
 
 # Delete Config file if it exits
 file='config'
