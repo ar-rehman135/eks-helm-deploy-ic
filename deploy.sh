@@ -101,9 +101,9 @@ fi
 if [ -n "$DEPLOY_VALUES" ]; then
     UPGRADE_COMMAND="${UPGRADE_COMMAND} --set ${DEPLOY_VALUES}"
 fi
-if [ true ]; then
-    UPGRADE_COMMAND="${UPGRADE_COMMAND} --debug"
-fi
+# if [ false ]; then
+#     UPGRADE_COMMAND="${UPGRADE_COMMAND} --debug"
+# fi
 if [ "$DRY_RUN" = true ]; then
     UPGRADE_COMMAND="${UPGRADE_COMMAND} --dry-run"
 fi
