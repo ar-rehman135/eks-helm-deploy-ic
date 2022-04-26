@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/sh
+
 
 # Login to Kubernetes Cluster.
 # UPDATE_KUBECONFIG_COMMAND="aws eks --region ${AWS_REGION} update-kubeconfig --name ${CLUSTER_NAME}"
@@ -28,6 +29,7 @@ mkdir -p /home/.kube
 echo "Kube DIR : " "/home/.kube"
 KUBECONFIG='/home/.kube'
 echo $KUBECONFIG
+env
 cd /home/.kube
 
 # Delete Config file if it exits
