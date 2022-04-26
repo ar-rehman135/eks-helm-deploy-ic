@@ -26,8 +26,8 @@ initial_path=$(pwd)
 
 # Create folder in home directory
 mkdir -p /home/.kube
-echo "Kube DIR : " "/home/.kube"
-KUBECONFIG='/home/.kube'
+echo "Kube DIR : " "/home/.kube/config"
+KUBECONFIG='/home/.kube/config'
 echo $KUBECONFIG
 env
 cd /home/.kube
