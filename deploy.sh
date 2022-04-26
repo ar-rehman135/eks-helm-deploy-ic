@@ -88,7 +88,7 @@ echo $(pwd)
 
 # Helm Deployment
 UPGRADE_COMMAND="helm upgrade --install --timeout 30s"
-for config_file in ${DEPLOY_CONFIG_FILES//,/ }
+for config_file in ${DEPLOY_CONFIG_FILES}
 do
     UPGRADE_COMMAND="${UPGRADE_COMMAND} -f ${config_file}"
 done
