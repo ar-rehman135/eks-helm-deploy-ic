@@ -52,9 +52,9 @@ inputs:
     dry-run:
         description: 'Simulate an upgrade.'
         required: false
-    debug:
-        description: 'Enable verbose output'
-        required: false
+    # debug:
+    #     description: 'Enable verbose output'
+    #     required: false
 
 runs:
     using: 'docker'
@@ -76,4 +76,4 @@ runs:
         CLUSTER_ROLE_ARN: ${{ inputs.cluster-role-arn }}
         DEPLOY_VALUES: ${{ inputs.values }}
         DRY_RUN: ${{ inputs.dry-run }}
-        DEBUG: ${{ inputs.debug }}
+        # DEBUG: ${{ inputs.debug }}
