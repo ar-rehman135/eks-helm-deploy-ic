@@ -25,12 +25,9 @@ initial_path=$(pwd)
 
 
 # Create folder in home directory
-mkdir -p /home/.kube
-echo "Kube DIR : " "/home/.kube/config"
-KUBECONFIG='/home/.kube/config'
-echo $KUBECONFIG
-env
-cd /home/.kube
+mkdir -p /home/kube
+echo "Kube DIR : " "/home/kube/config"
+cd /home/kube
 
 # Delete Config file if it exits
 file='config'
@@ -73,6 +70,12 @@ echo "      command: aws" >> config
 echo "      env: null" >> config  
 echo "      interactiveMode: IfAvailable" >> config  
 echo "      provideClusterInfo: false" >> config  
+
+echo "Check KUBECONFIG------------------------"
+export KUBECONFIG='/home/kube/config'
+echo $KUBECONFIG
+env
+echo "------------------------"
 
 
 cd ${initial_path}
