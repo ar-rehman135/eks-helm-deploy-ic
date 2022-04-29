@@ -25,9 +25,9 @@ initial_path=$(pwd)
 
 
 # Create folder in home directory
-mkdir -p /home/.kube
-echo "Kube DIR : " "/home/.kube/config"
-cd /home/.kube
+mkdir -p /home/kube
+echo "Kube DIR : " "/home/kube/config"
+cd /home/kube
 
 # Delete Config file if it exits
 file='config'
@@ -111,4 +111,4 @@ UPGRADE_COMMAND="${UPGRADE_COMMAND} ${DEPLOY_NAME} ${DEPLOY_CHART_PATH}"
 echo "Executing: ${UPGRADE_COMMAND}"
 ${UPGRADE_COMMAND}
 
-rm -r /home/.kube 
+rm -r /home/kube 
