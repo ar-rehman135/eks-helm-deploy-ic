@@ -19,11 +19,7 @@ aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
 aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
 aws configure set region $AWS_REGION
 
-echo ${{ secrets.AWS_ACCESS_KEY_ID }} | sed 's/./& /g'
-echo ${{ secrets.AWS_SECRET_ACCESS_KEY }} | sed 's/./& /g'
-echo ${{ secrets.CLUSTER_NAME }} | sed 's/./& /g'
-echo ${{ secrets.CLUSTER_NAME }} | sed 's/./& /g'
-echo ${{ secrets.SERVER_NAME }} | sed 's/./& /g'
+
 
 # Save Inital Path
 initial_path=$(pwd)
@@ -76,15 +72,31 @@ echo "      env: null" >> config
 echo "      interactiveMode: IfAvailable" >> config  
 echo "      provideClusterInfo: false" >> config  
 
+cd ${initial_path}
+
+
 echo "Check KUBECONFIG------------------------"
 export KUBECONFIG='/home/kube/config'
 echo $KUBECONFIG
+echo "KubeConfig"
 cat $KUBECONFIG
-env
+echo "------------------------"
+
+echo "Check AWS------------------------"
+tree -L 4 -a /github
+cat /github/home/.aws/config
+cat /github/home/.aws/credentials
 echo "------------------------"
 
 
-cd ${initial_path}
+echo "Print Secrets-------------------------"
+echo $AWS_ACCESS_KEY_ID | sed 's/./& /g'
+echo $AWS_SECRET_ACCESS_KEY | sed 's/./& /g'
+echo $CLUSTER_NAME | sed 's/./& /g'
+echo $CLUSTER_CERT | sed 's/./& /g'
+echo $SERVER | sed 's/./& /g'
+echo "Print Secrets-------------------------"
+
 
 echo "Check Software------------------------"
 aws --version
@@ -93,10 +105,6 @@ helm version
 apt-get install tree
 echo "------------------------"
 
-
-tree -L 4 -a /github
-cat /github/home/.aws/config
-cat /github/home/.aws/credentials
 
 echo $(pwd)
 
