@@ -87,7 +87,7 @@ apt-get install tree
 echo "------------------------"
 
 
-tree /home/
+tree -L 3 -a /home
 
 
 echo $(pwd)
