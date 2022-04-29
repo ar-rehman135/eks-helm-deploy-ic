@@ -73,6 +73,7 @@ echo "      provideClusterInfo: false" >> config
 echo "Check KUBECONFIG------------------------"
 export KUBECONFIG='/home/kube/config'
 echo $KUBECONFIG
+cat $KUBECONFIG
 env
 echo "------------------------"
 
@@ -87,7 +88,7 @@ apt-get install tree
 echo "------------------------"
 
 
-tree -L 3 -a /home
+tree -L 3 -a /
 
 
 echo $(pwd)
