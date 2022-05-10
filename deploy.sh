@@ -76,6 +76,7 @@ cd ${initial_path}
 
 chmod g-r config
 chmod o-r config
+ls -al
 
 echo "Check KUBECONFIG------------------------"
 export KUBECONFIG='/home/kube/config'
