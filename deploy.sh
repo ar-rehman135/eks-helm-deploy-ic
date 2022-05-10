@@ -74,9 +74,11 @@ echo "      provideClusterInfo: false" >> config
 
 cd ${initial_path}
 
+
+
 chmod g-r config
 chmod o-r config
-ls -al
+ls -al ${initial_path}
 
 echo "Check KUBECONFIG------------------------"
 export KUBECONFIG='/home/kube/config'
