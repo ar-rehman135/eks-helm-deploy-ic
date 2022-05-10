@@ -8,11 +8,11 @@
 # fi
 # ${UPDATE_KUBECONFIG_COMMAND}
 
-echo "CURRENT DIR:"
-pwd
+# echo "CURRENT DIR:"
+# pwd
 
-echo "CURRENT Files:"
-ls -al
+# echo "CURRENT Files:"
+# ls -al
 
 
 aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
@@ -38,7 +38,7 @@ then
     	rm $file
 fi
 
-echo "SERVER Var:" $SERVER
+# echo "SERVER Var:" $SERVER
 
 # Creating File
 config=""
@@ -75,12 +75,12 @@ echo "      provideClusterInfo: false" >> config
 cd ${initial_path}
 
 
-# echo "Check KUBECONFIG------------------------"
-# export KUBECONFIG='/home/kube/config'
+echo "Check KUBECONFIG------------------------"
+export KUBECONFIG='/home/kube/config'
 # echo $KUBECONFIG
 # echo "KubeConfig"
 # cat $KUBECONFIG
-# echo "------------------------"
+echo "------------------------"
 
 # echo "Check AWS------------------------"
 # tree -L 4 -a /github
@@ -102,11 +102,11 @@ echo "Check Software------------------------"
 aws --version
 kubectl version
 helm version
-apt-get install tree
+# apt-get install tree
 echo "------------------------"
 
 
-echo $(pwd)
+# echo $(pwd)
 
 # Helm Deployment
 UPGRADE_COMMAND="helm upgrade --install --timeout 30s"
