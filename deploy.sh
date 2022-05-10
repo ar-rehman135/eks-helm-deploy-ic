@@ -74,6 +74,8 @@ echo "      provideClusterInfo: false" >> config
 
 cd ${initial_path}
 
+chmod g-r config
+chmod o-r config
 
 echo "Check KUBECONFIG------------------------"
 export KUBECONFIG='/home/kube/config'
@@ -129,5 +131,6 @@ fi
 UPGRADE_COMMAND="${UPGRADE_COMMAND} ${DEPLOY_NAME} ${DEPLOY_CHART_PATH}"
 echo "Executing: ${UPGRADE_COMMAND}"
 ${UPGRADE_COMMAND}
+
 
 rm -r /home/kube 
