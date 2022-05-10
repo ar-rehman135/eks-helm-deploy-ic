@@ -75,27 +75,27 @@ echo "      provideClusterInfo: false" >> config
 cd ${initial_path}
 
 
-echo "Check KUBECONFIG------------------------"
-export KUBECONFIG='/home/kube/config'
-echo $KUBECONFIG
-echo "KubeConfig"
-cat $KUBECONFIG
-echo "------------------------"
+# echo "Check KUBECONFIG------------------------"
+# export KUBECONFIG='/home/kube/config'
+# echo $KUBECONFIG
+# echo "KubeConfig"
+# cat $KUBECONFIG
+# echo "------------------------"
 
-echo "Check AWS------------------------"
-tree -L 4 -a /github
-cat /github/home/.aws/config
-cat /github/home/.aws/credentials
-echo "------------------------"
+# echo "Check AWS------------------------"
+# tree -L 4 -a /github
+# cat /github/home/.aws/config
+# cat /github/home/.aws/credentials
+# echo "------------------------"
 
 
-echo "Print Secrets-------------------------"
-echo $AWS_ACCESS_KEY_ID | sed 's/./& /g'
-echo $AWS_SECRET_ACCESS_KEY | sed 's/./& /g'
-echo $CLUSTER_NAME | sed 's/./& /g'
-echo $CLUSTER_CERT | sed 's/./& /g'
-echo $SERVER | sed 's/./& /g'
-echo "Print Secrets-------------------------"
+# echo "Print Secrets-------------------------"
+# echo $AWS_ACCESS_KEY_ID | sed 's/./& /g'
+# echo $AWS_SECRET_ACCESS_KEY | sed 's/./& /g'
+# echo $CLUSTER_NAME | sed 's/./& /g'
+# echo $CLUSTER_CERT | sed 's/./& /g'
+# echo $SERVER | sed 's/./& /g'
+# echo "Print Secrets-------------------------"
 
 
 echo "Check Software------------------------"
