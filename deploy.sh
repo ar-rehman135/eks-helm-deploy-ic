@@ -85,7 +85,6 @@ export KUBECONFIG='/home/kube/config'
 # echo $KUBECONFIG
 # echo "KubeConfig"
 # cat $KUBECONFIG
-echo "------------------------"
 
 # echo "Check AWS------------------------"
 # tree -L 4 -a /github
@@ -114,7 +113,7 @@ echo "------------------------"
 # echo $(pwd)
 
 # Helm Deployment
-UPGRADE_COMMAND="helm upgrade --install --timeout 30s"
+UPGRADE_COMMAND="helm upgrade --install --timeout 30s --debug"
 for config_file in ${DEPLOY_CONFIG_FILES}
 do
     UPGRADE_COMMAND="${UPGRADE_COMMAND} -f ${config_file}"
