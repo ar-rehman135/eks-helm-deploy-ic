@@ -58,7 +58,7 @@ inputs:
 
 runs:
     using: 'docker'
-    image: 'docker://infcomp/eks-helm-deploy-ic:v3'
+    image: 'docker://infcomp/eks-helm-deploy-ic:v3_test'
     env:
         AWS_ACCESS_KEY_ID: ${{ inputs.aws-access-key-id }}
         AWS_SECRET_ACCESS_KEY: ${{ inputs.aws-secret-access-key }}
